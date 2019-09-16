@@ -1,0 +1,21 @@
+.swiper image {
+  width: 100%;
+  height: auto;
+}
+.setting{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left; 
+}
+.date_setting{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left; 
+}
+.textView{
+  width: 100%;
+  word-break: keep-all;
+  word-wrap: break-word
+}

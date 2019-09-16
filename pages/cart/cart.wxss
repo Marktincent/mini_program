@@ -1,0 +1,35 @@
+/**index.wxss**/
+page{
+  background: #f9f9f9;
+}
+.container{
+  padding: 32rpx;
+  height: 100%
+}
+.service-title{
+  padding: 32rpx 0 0 48rpx;
+  font-size: 38rpx;
+}
+.services{
+    display: flex;
+    display: -webkit-flex;
+    box-sizing: border-box;
+}
+.services view{
+    box-sizing: border-box;
+    /* border: 1rpx solid #ccc; */
+    flex: 1;
+    -webkit-flex: 1;
+
+    /*background: #f1f1f1;*/
+    text-align: center;
+    padding: 32rpx 0;
+
+}
+.services view image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.services view text{
+  display: block;
+}

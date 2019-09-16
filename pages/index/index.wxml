@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view>
+  <view class="banner">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for-items="{{infoArr}}" wx:key="item">
+        <swiper-item>
+          <image class="banner-img" style="width:{{imageWidth}}px;" src="{{item.uploadPath}}" class="slide-image" model="aspectFit" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 上传信息 -->
+  <block wx:for-items="{{infoArr}}" wx:key="item" >
+    <view class='setting' bindtap='jumpLogin'>
+      <view>
+        <image class='btnImg' src='{{item.uploadPath}}' style="width: 60px; height: 60px; margin:10px;"></image>
+      </view>
+      <view style="flex-direction:column;margin:10px;">
+        <view>
+          <text class='textView' style="font-size:0.7rem;margin-right:10rpx;magin-top:10rpx;display:block;white-space: pre-line; word-break: break-all;" direction="rtl">{{item.uploadDesc}}</text>
+        </view>
+        <view>
+          <text class='textView' style="font-size:0.7rem;color:#0AAAF6;margin-right:10rpx;">上传时间:{{item.uploadDate}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

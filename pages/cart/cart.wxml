@@ -1,0 +1,35 @@
+<!-- 引入自定义函数 -->
+<wxs module="filters" src="toInt.wxs"></wxs>
+
+<view class="container">
+  <!-- view容器嵌套， 可设置多页翻滚效果 -->
+  <view>
+    <block wx:for="{{linkBookData}}" wx:for-index="i" wx:for-item="item_i" wx:for-key="key_i">
+      <view class="service-title">
+        {{item_i.name}}:
+      </view>
+      <!-- 每行展示三个，只有两种情况：
+           1-刚好是3的倍数，这种情况直接使用结果循环 
+           2-不是三的倍数， 这种情况需要对结果取整数，然后+1 
+           0  1  2    
+           3  4  5
+           6  7  8
+           以上为child坐标数据，最里面循环值始item_k终为0  1  2  第二层循环值item_j为： 0  1  2  3  4  5  6...
+           从中可以发现规律：坐标数据 = item_j * 3 + item_k
+      -->
+      <block wx:for="{{item_i.child.length % 3 == 0 ? item_i.child.length/3 : filters.toFix(item_i.child.length/3) + 1}}" wx:for-index="j" wx:for-item="item_j" wx:for-key="key_j">
+          <view class="services">
+            <!-- 固定每行只展示三条记录数 -->
+            <block wx:for="{{3}}" wx:for-index="k" wx:for-item="item_k" wx:for-key="key_k">
+              <view>
+                <!-- 如果没有图片属性，则默认当前模块不可用！ -->
+                <image bindtap="phone" data-tel="{{item_i.child[item_j * 3 + item_k].tel}}" src="{{item_i.child[item_j * 3 + item_k].img}}" 
+                       wx:if="{{item_i.child[item_j * 3 + item_k].img != null}}"></image>  
+                <text>{{item_i.child[item_j * 3 + item_k].name}}</text>
+              </view>
+            </block>
+          </view>
+      </block>
+    </block>      
+  </view>
+</view>
